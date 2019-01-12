@@ -1,13 +1,7 @@
-import {LoginView} from './login-view.js';
-import {LoginController} from './login-controller.js';
+import { Router } from '@vaadin/router';
+import { routes } from './routes.js';
+/* theme:import */
 
-import {StatusController} from './status-controller.js'
-import {StatusView} from './status-view.js';
-
-async function main() {
-  const loginController = new LoginController(new LoginView(document.body));
-  await loginController.loginAction();
-  new StatusController(new StatusView(document.body));
-}
-
-main();
+export const router = new Router();
+router.setOutlet(document.body);
+router.setRoutes(routes);

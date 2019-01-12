@@ -2,6 +2,8 @@ package com.vaadin.connect.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import com.vaadin.connect.oauth.EnableVaadinConnectOAuthServer;
 import com.vaadin.frontend.server.EnableVaadinFrontendServer;
@@ -12,7 +14,12 @@ import com.vaadin.frontend.server.EnableVaadinFrontendServer;
 @SpringBootApplication
 @EnableVaadinConnectOAuthServer
 @EnableVaadinFrontendServer
-public class StarterApplication {
+public class StarterApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(StarterApplication.class);
+    }
 
     /**
      * Main method to run the application.
